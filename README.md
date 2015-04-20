@@ -22,8 +22,8 @@ buf.get(0,2); // -> [4,3,2]  (2-parameter get takes start and end)
 buf.toarray(); // -> [4,3,2]  (equivalent to buf.get(0,buf.size() - 1) )
 console.log(buf.deq()); // -> 4
 buf.toarray(); // -> [3,2]
-buf.deq();
-buf.deq();
+buf.deq(); // -> 3
+buf.deq(); // -> 2
 buf.toarray(); // -> []
 buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
 ```
