@@ -4,7 +4,11 @@
   "description": "A NodeJS simple circular buffer implementation supporting indexing ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
+  },
+  "devDependencies": {
+	  "mocha": "^2.2.4",
+	  "chai": "^2.2.0"
   },
   "repository": {
     "type": "git",
