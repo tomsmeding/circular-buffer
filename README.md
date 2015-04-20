@@ -1,8 +1,8 @@
-#NodeJS Circular Buffer
+# NodeJS Circular Buffer
 
 This is a simple [circular buffer](http://en.wikipedia.org/wiki/Circular_buffer) implementation for NodeJS.
 
-##Usage
+## Usage
 
 Below is a sample session with a circular buffer with this package. It should answer most questions.
 
@@ -28,7 +28,7 @@ buf.toarray(); // -> []
 buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
 ```
 
-##Functions
+## Functions
 
 - `size()` -> `integer`
   - Returns the current number of items in the buffer.
