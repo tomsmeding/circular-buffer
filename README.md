@@ -44,3 +44,7 @@ buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
   - Gets the values from index `start` up to and including index `end`; returns an array. The newest item is first in the array, and it is the same as `buf.get(start)`.
 - `toarray()` -> `[value]`
   - Equivalent to `buf.get(0,buf.size() - 1)`: exports all items in the buffer in order.
+
+## Testing
+
+To test the package simply run `npm update && npm test` in the package's root folder.
