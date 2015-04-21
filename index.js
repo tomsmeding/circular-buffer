@@ -2,7 +2,8 @@ function CircularBuffer(capacity){
 	if(!(this instanceof CircularBuffer))return new CircularBuffer(capacity);
 	if(typeof capacity!="number"||capacity%1!=0||capacity<1)
 		throw new TypeError("Invalid capacity");
-	var buffer=new Array(capacity),first=capacity-1,size=0;
+
+	var buffer=new Array(capacity),first=capacity,size=0;
 	this.size=function(){return size;};
 	this.capacity=function(){return capacity;};
 	this.enq=function(value){
@@ -27,9 +28,13 @@ function CircularBuffer(capacity){
 		if(typeof end!="number"||end%1!=0||end<0)throw new TypeError("Invalid end");
 		if(end>=size)throw new RangeError("Index past end of buffer: "+end);
 
-		var res=[],i;
-		for(i=start;i<=end;i++)res.push(buffer[(first+i)%capacity]);
-		return res;
+		if(first+start>=capacity){
+			//make sure first+start and first+end are in a normal range
+			start-=capacity; //becomes a negative number
+			end-=capacity;
+		}
+		if(first+end<capacity)return buffer.slice(first+start,first+end+1);
+		else return buffer.slice(first+start,capacity).concat(buffer.slice(0,first+end+1-capacity));
 	};
 	this.toarray=function(){
 		if(size==0)return [];
