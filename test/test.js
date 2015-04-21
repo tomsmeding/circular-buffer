@@ -51,6 +51,18 @@ describe("CircularBuffer", function () {
 		assert.deepEqual(res, [3, 2, 1]);
 	});
 
+	it("should handle partial gets correctly", function () {
+		var buf = new CircularBuffer(size);
+
+		for (var i = 0; i < 4; i++) {
+			buf.enq(i);
+		}
+
+		var res = buf.get(1,2); // 2,1
+		assert.instanceOf(res, Array);
+		assert.deepEqual(res, [2, 1]);
+	});
+
 	it("should convert the current values to an array", function () {
 		var buf = new CircularBuffer(size);
 
