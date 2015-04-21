@@ -4,7 +4,7 @@ var CircularBuffer = require("../");
 describe("CircularBuffer", function () {
 	var size = 3;
 
-	it("should be an CircularBuffer", function () {
+	it("should be a CircularBuffer", function () {
 		var buf = new CircularBuffer(size);
 		assert.instanceOf(buf, CircularBuffer);
 	});
@@ -14,7 +14,7 @@ describe("CircularBuffer", function () {
 		assert.equal(buf.capacity(), size);
 	});
 
-	it("should correctly return the current count", function () {
+	it("should correctly return the buffer size", function () {
 		var buf = new CircularBuffer(size);
 		assert.equal(buf.size(), 0);
 
@@ -29,7 +29,7 @@ describe("CircularBuffer", function () {
 		assert.equal(buf.size(), 3);
 	});
 
-	it("should queue items and get them", function () {
+	it("should enqueue items and get them", function () {
 		var buf = new CircularBuffer(size);
 		var n = Math.random();
 
@@ -62,7 +62,7 @@ describe("CircularBuffer", function () {
 		assert.deepEqual(buf.toarray(), [42]);
 	});
 
-	it("should error when dequeuing empty buffer", function () {
+	it("should error when dequeuing on an empty buffer", function () {
 		var buf = new CircularBuffer(size);
 		try {
 			buf.deq();
