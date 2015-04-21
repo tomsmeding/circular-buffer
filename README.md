@@ -1,4 +1,9 @@
 # NodeJS Circular Buffer
+<p>
+	<a href="https://travis-ci.org/tomsmeding/circular-buffer">
+		<img src="https://api.travis-ci.org/tomsmeding/circular-buffer.png?branch=master" alt="Travis CI Badge"/>
+	</a>
+</p>
 
 This is a simple [circular buffer](http://en.wikipedia.org/wiki/Circular_buffer) implementation for NodeJS.
 
