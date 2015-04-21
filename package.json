@@ -1,6 +1,6 @@
 {
   "name": "circular-buffer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A NodeJS simple circular buffer implementation supporting indexing ",
   "main": "index.js",
   "scripts": {

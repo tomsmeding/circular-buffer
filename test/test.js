@@ -70,20 +70,64 @@ describe("CircularBuffer", function () {
 		assert.lengthOf(buf.toarray(), 0);
 
 		buf.enq(42);
+		buf.enq("str");
+		buf.enq(true);
+		buf.enq(Math.PI);
 
-		assert.deepEqual(buf.toarray(), [42]);
+		assert.deepEqual(buf.toarray(), [Math.PI, true, "str"]);
 	});
 
 	it("should error when dequeuing on an empty buffer", function () {
 		var buf = new CircularBuffer(size);
 		try {
 			buf.deq();
-		} catch (e) { // yay! we catched an error
+		} catch (e) { // yay! we caught an error
 			return;
 		}
 
-		// uh noes we shouldnt be allowed to do this.
 		assert.fail("No error after dequeueing empty buffer", "Error after dequeueing empty buffer");
+	});
+
+	it("should error when shifting on an empty buffer", function () {
+		var buf = new CircularBuffer(size);
+		try {
+			buf.shift();
+		} catch (e) { // yay! we caught an error
+			return;
+		}
+
+		assert.fail("No error after shifting empty buffer", "Error after shifting empty buffer");
+	});
+
+	it("should correctly distinguish push and enq", function () {
+		var buf = new CircularBuffer(size);
+		buf.enq("mid");
+		buf.push("last");
+		buf.enq("first");
+		assert.deepEqual(buf.toarray(), ["first", "mid", "last"]);
+	});
+
+	it("should shift correctly", function () {
+		var buf = new CircularBuffer(size);
+		buf.push(1);
+		buf.push(2);
+		buf.push(3);
+		buf.push(4);
+
+		assert.deepEqual(buf.shift(), 2);
+		assert.deepEqual(buf.toarray(), [3, 4]);
+	});
+
+	it("should dequeue and pop correctly", function () {
+		var buf = new CircularBuffer(size);
+		buf.push(1);
+		buf.push(2);
+		buf.push(3);
+		buf.push(4);
+
+		assert.deepEqual(buf.pop(), 4);
+		assert.deepEqual(buf.deq(), 3);
+		assert.deepEqual(buf.toarray(), [2]);
 	});
 
 });
