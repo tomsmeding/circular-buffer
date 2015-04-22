@@ -1,7 +1,17 @@
 function CircularBuffer(capacity){
 	if(!(this instanceof CircularBuffer))return new CircularBuffer(capacity);
-	if(typeof capacity!="number"||capacity%1!=0||capacity<1)
-		throw new TypeError("Invalid capacity");
+	if(typeof capacity=="object"&&
+		Array.isArray(capacity["_buffer"])&&
+		typeof capacity._capacity=="number"&&
+		typeof capacity._first=="number"&&
+		typeof capacity._size=="number"){
+		for(var prop in capacity){
+			if(capacity.hasOwnProperty(prop))this[prop]=capacity[prop];
+		}
+	} else {
+		if(typeof capacity!="number"||capacity%1!=0||capacity<1)
+			throw new TypeError("Invalid capacity");
+	}
 
 	this._buffer=new Array(capacity);
 	this._capacity=capacity;
