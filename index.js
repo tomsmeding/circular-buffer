@@ -11,12 +11,11 @@ function CircularBuffer(capacity){
 	} else {
 		if(typeof capacity!="number"||capacity%1!=0||capacity<1)
 			throw new TypeError("Invalid capacity");
+		this._buffer=new Array(capacity);
+		this._capacity=capacity;
+		this._first=0;
+		this._size=0;
 	}
-
-	this._buffer=new Array(capacity);
-	this._capacity=capacity;
-	this._first=0;
-	this._size=0;
 }
 
 CircularBuffer.prototype={
