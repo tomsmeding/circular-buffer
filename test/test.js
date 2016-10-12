@@ -130,4 +130,32 @@ describe("CircularBuffer", function () {
 		assert.deepEqual(buf.toarray(), [2]);
 	});
 
+	it("should handle the README example correctly", function () {
+		var buf = new CircularBuffer(3);
+		assert.deepEqual(buf.capacity(), 3);
+		buf.enq(1);
+		buf.enq(2);
+		assert.deepEqual(buf.size(), 2);
+		assert.deepEqual(buf.toarray(), [2,1]);
+		buf.push(3);
+		assert.deepEqual(buf.toarray(), [2,1,3]);
+		buf.enq(4);
+		assert.deepEqual(buf.size(), 3);
+		assert.deepEqual(buf.toarray(), [4,2,1]);
+		assert.deepEqual(buf.get(0), 4);
+		assert.deepEqual(buf.get(0,2), [4,2,1]);
+		assert.deepEqual(buf.toarray(), [4,2,1]);
+		assert.deepEqual(buf.deq(), 1);
+		assert.deepEqual(buf.toarray(), [4,2]);
+		assert.deepEqual(buf.pop(), 2);
+		assert.deepEqual(buf.deq(), 4);
+		assert.deepEqual(buf.toarray(), []);
+		try {
+			buf.deq();
+		} catch (e) {
+			return;
+		}
+		assert.fail("No error after dequeueing empty buffer", "Error after dequeueing empty buffer");
+	});
+
 });
