@@ -17,6 +17,10 @@ Below is a sample session with a circular buffer with this package. It should an
 var CircularBuffer = require("circular-buffer");
 
 var buf = new CircularBuffer(3);
+buf.fill('foo');
+console.log("[" + buf.get(0, buf.size()-1) + "]"); // -> [foo, foo, foo]
+buf.clear();
+console.log(buf.size()); // -> 0
 console.log(buf.capacity()); // -> 3
 buf.enq(1);
 buf.enq(2);
