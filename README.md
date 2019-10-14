@@ -62,7 +62,3 @@ buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
   - Clears the buffer
 - `toarray()` -> `[value]`
   - Equivalent to `buf.get(0,buf.size() - 1)`: exports all items in the buffer in front-to-back order.
-
-## Testing
-
-To test the package simply run `npm update && npm test` in the package's root folder.
