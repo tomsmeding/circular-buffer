@@ -72,6 +72,18 @@ CircularBuffer.prototype={
 	toarray:function(){
 		if(this._size==0)return [];
 		return this.get(0,this._size-1);
+	},
+	fill:function(value){
+		for(let i=0; i!=this._capacity; ++i ){
+			if(this._first>0)this._first--; else this._first=this._capacity-1;
+			this._buffer[this._first]=value;
+			if(this._size<this._capacity)this._size++;;
+		}
+	},
+	clear:function(){
+		this._buffer=new Array(this._capacity);
+		this._first=0;
+		this._size=0;
 	}
 };
 
