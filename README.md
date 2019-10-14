@@ -52,6 +52,8 @@ buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
   - Get the value at index `idx`. `0` is the front of the buffer (last-enqueued item, or first-pushed item), `buf.size()-1` is the back of the buffer.
 - `get(start,end)` -> `[value]`
   - Gets the values from index `start` up to and including index `end`; returns an array, in front-to-back order. Equivalent to `[buf.get(start),buf.get(start+1),/*etc*/,buf.get(end)]`.
+- `fill(value)` -> `undefined
+  - Fills the buffer with elements of selected value
 - `toarray()` -> `[value]`
   - Equivalent to `buf.get(0,buf.size() - 1)`: exports all items in the buffer in front-to-back order.
 
