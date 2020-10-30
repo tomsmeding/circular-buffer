@@ -7,7 +7,7 @@
 
 This is a simple [circular buffer](http://en.wikipedia.org/wiki/Circular_buffer) implementation for NodeJS.
 
-The implementation can function both as a queue (which it's most suited for), and as a (forgetful) stack. Queue functionality uses `enq()` and `deq()`; stack functionality uses `push()` and `pop()`. Values are enqueued at the front of the buffer and dequeued at the back of the buffer; pushing and popping is at the back of the buffer. Indexing is front-to-back: the last-enqueued item has lowest index, which is also the first-pushed item.
+The implementation can function both as a forgetful queue (which it's most suited for), and as a (forgetful) stack. Queue functionality uses `enq()` and `deq()`; stack functionality uses `push()` and `pop()`. Values are enqueued at the front of the buffer and dequeued at the back of the buffer; pushing and popping is at the back of the buffer. Indexing is front-to-back: the last-enqueued item has lowest index, which is also the first-pushed item.
 
 ## Usage
 
@@ -48,6 +48,12 @@ buf.deq(); // -> throws RangeError("CircularBuffer dequeue on empty buffer")
   - Enqueue `value` at the front of the buffer
 - `deq()` -> `value`
   - Dequeue an item from the back of the buffer; returns that item. Throws `RangeError` if the buffer is empty on invocation.
+- `push(value)`
+  - Push `value` at the back of the buffer
+- `pop()` -> `value`
+  - Equivalent to `deq()`.
+- `shift()` -> `value`
+  - Removes an item from the front of the buffer; returns that item. Throws `RangeError` if the buffer is empty on invocation.
 - `get(idx)` -> `value`
   - Get the value at index `idx`. `0` is the front of the buffer (last-enqueued item, or first-pushed item), `buf.size()-1` is the back of the buffer.
 - `get(start,end)` -> `[value]`
