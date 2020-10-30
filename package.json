@@ -1,14 +1,14 @@
 {
   "name": "circular-buffer",
   "version": "1.0.2",
-  "description": "A NodeJS simple circular buffer implementation supporting indexing ",
+  "description": "A NodeJS simple circular buffer implementation supporting indexing",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
   "devDependencies": {
-	  "mocha": "^2.2.4",
-	  "chai": "^2.2.0"
+    "chai": "^4.2.0",
+    "mocha": "^8.2.0"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
     "circular-buffer",
     "data-structure"
   ],
-  "author": "Tom Smeding <hallo@tomsmeding.nl> (http://tomsmeding.com)",
+  "author": "Tom Smeding <tom.smeding@gmail.com> (https://tomsmeding.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tomsmeding/circular-buffer/issues"
